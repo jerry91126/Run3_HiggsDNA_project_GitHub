@@ -1,8 +1,6 @@
 # PreEE data
 DataC0_2023 /EGamma0/Run2023C-24Jan2024_v1-v1/NANOAOD
 DataC1_2023 /EGamma1/Run2023C-24Jan2024_v1-v1/NANOAOD
-DataD0_2023 /EGamma0/Run2023D-24Jan2024_v1-v1/NANOAOD
-DataD1_2023 /EGamma1/Run2023D-24Jan2024_v1-v1/NANOAOD
 
 # Background samples
 ## QCD

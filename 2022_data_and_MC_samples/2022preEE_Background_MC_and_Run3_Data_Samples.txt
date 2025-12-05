@@ -17,6 +17,7 @@ GG-Box-3Jets_MGG-80_preEE /GG-Box-3Jets_MGG-80_13p6TeV_sherpa/Run3Summer22NanoAO
 
 ## Drell-Yan
 DYto2L-2Jets_MLL-50_preEE /DYto2L-2Jets_MLL-50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv13-133X_mcRun3_2022_realistic_ForNanov13_v1-v1/NANOAODSIM
+DYto2L-2Jets_MLL-50_ext2_preEE /DYto2L-2Jets_MLL-50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv13-133X_mcRun3_2022_realistic_ForNanov13_v1_ext2-v2/NANOAODSIM
 
 ### DYGto2LG-1Jets process is used to supplement ZGto2LG process below.
 DYGto2LG-1Jets_MLL-50_PTG-10to50_preEE /DYGto2LG-1Jets_MLL-50_PTG-10to50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/Run3Summer22NanoAODv13-133X_mcRun3_2022_realistic_ForNanov13_v1-v1/NANOAODSIM

@@ -1,0 +1,112 @@
+{
+    "description": "Selection configuration for VH-MET analysis",
+    "selections": {
+        "diphoton_mass_range": {
+            "enabled": true,
+            "field": "mass",
+            "operator": "between",
+            "value": [100, 180],
+            "description": "Diphoton mass range"
+        },
+        "higgs_blinding": {
+            "enabled": true,
+            "field": "mass",
+            "operator": "outside",
+            "value": [115, 135],
+            "description": "Blind the Higgs signal region"
+        },
+        "two_lepton_category": {
+            "enabled": false,
+            "field": "event_category",
+            "operator": "==",
+            "value": 2,
+            "description": "Two-lepton (ZH) category"
+        },
+        "one_lepton_category": {
+            "enabled": false,
+            "field": "event_category",
+            "operator": "==",
+            "value": 1,
+            "description": "One-lepton (WH) category"
+        },
+        "zero_lepton_category": {
+            "enabled": true,
+            "field": "event_category",
+            "operator": "==",
+            "value": 0,
+            "description": "Zero-lepton category"
+        },
+        "lead_photon_mva": {
+            "enabled": true,
+            "field": "lead_mvaID",
+            "operator": ">",
+            "value": -0.7,
+            "description": "Lead photon MVA ID cut"
+        },
+        "sublead_photon_mva": {
+            "enabled": true,
+            "field": "sublead_mvaID",
+            "operator": ">",
+            "value": -0.7,
+            "description": "Sublead photon MVA ID cut"
+        },
+        "z_mass_window_veto": {
+            "enabled": false,
+            "compound": true,
+            "logic": "OR",
+            "conditions": [
+                {
+                    "field": "electron_mass",
+                    "operator": "between",
+                    "value": [60, 120]
+                },
+                {
+                    "field": "muon_mass",
+                    "operator": "between",
+                    "value": [60, 120]
+                }
+            ],
+            "description": "Z mass window: (electron_mass in [60,120]) OR (muon_mass in [60,120])"
+        },
+        "muon0_pt_cut": {
+            "enabled": false,
+            "field": "muon0_pt",
+            "operator": ">",
+            "value": 15,
+            "description": "Additional muon pt cut for WH-leptonic"
+        },
+        "met_pt_cut": {
+            "enabled": true,
+            "field": "MET_pt",
+            "operator": ">",
+            "value": 50,
+            "description": "MET pt cut for WH-leptonic, VH-MET"
+        },
+        "delta_phi_met_diphoton_cut": {
+            "enabled": true,
+            "field": "delta_phi",
+            "operator": ">",
+            "value": 2.0,
+            "description": "Delta phi between MET and diphoton system for WH-leptonic, VH-MET"
+        },
+        "lead_photon_pt_mgg_ratio_cut": {
+            "enabled": true,
+            "field": "lead_photon_pt_mgg_ratio",
+            "operator": ">",
+            "value": 0.33,
+            "description": "Lead photon pt / mgg ratio cut for WH-leptonic, VH-MET"
+        },
+        "sublead_photon_pt_mgg_ratio_cut": {
+            "enabled": true,
+            "field": "sublead_photon_pt_mgg_ratio",
+            "operator": ">",
+            "value": 0.2,
+            "description": "Sublead photon pt / mgg ratio cut for WH-leptonic, VH-MET"
+        }
+    },
+    "targeting": {
+        "targeted_ntuples": ["preEE"],
+        "excluded_ntuples": [],
+        "excluded_dirs": ["merged", "root"]
+    }
+}

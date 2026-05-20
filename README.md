@@ -22,3 +22,44 @@ Egamma Physics Objects Group (POG): https://twiki.cern.ch/twiki/bin/viewauth/CMS
 Muon POG: https://muon-wiki.docs.cern.ch/guidelines/recommendations/ (You can find the info of cut-based and MVA-based ID cut of muons here.)
 
 High-Level Trigger (HLT): https://twiki.cern.ch/twiki/bin/view/CMS/EgHLTPathDetails (You can find the details of each HLT here.)
+
+# Some workflow (arguments should be modified by case)
+
+## NTuplize nanoAOD files by processor with pre-selection and attach desired information
+```
+run_analysis.py --json-analysis runner_preEE.json --dump ../NTuples_test01 --executor futures --skipbadfiles --nano-version 13
+```
+run multiple times with different json file for various samples and era
+
+## Inspecting the NTuples with data/MC comparison
+by using Comparison_plot_v2.py (prefer .ipynb)
+
+## Generate data-driven sample (for MET)
+```
+python gen_data_driven_sample.py
+```
+
+## Apply additional selection and information
+```
+python sel_processor_style_met_BDT.py -i ../NTuples_test01_selected01 -o ../NTuples_test01_selected01_bdt01 -c ./selection_config_met_bdt.json -v --merge-compatible --skip-bdt
+```
+run multiple times with modified json file for various samples and era
+
+## Prepare ntuple features for BDT training
+```
+python ZH_met_BDT_training_variables.py -s Diphoton -o Diphoton_train_val
+```
+run multiple times with different argument -s, -o for each sample
+
+## Start BDT training by BDT classifier, create BDT model json file
+```
+python ZH_met_XGBoost_classifier.py
+```
+by default the BDT model json file will be stored at 06_vh_processor/ZH_met_BDT/ZH_met_BDT_classifier_output
+
+## Apply BDT model to the selected NTuples with attaching BDT score
+```
+python sel_processor_style_met_BDT.py -i ../NTuples_test01_selected01 -o ../NTuples_test01_selected01_bdt01 -c ./selection_config_met_bdt.json -v --merge-compatible --bdt-model ../ZH_met_BDT/ZH_met_BDT_classifier_output/ZH_met_classifier_1500_3_0.05_1_5.json
+```
+
+## Inspecting the NTuples with data/MC comparison for different parameters and BDT score
